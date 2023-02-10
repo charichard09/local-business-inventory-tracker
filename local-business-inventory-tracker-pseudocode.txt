@@ -79,9 +79,19 @@ add CREATE, READ, and UPDATE functionality
 	confirm adding new equipment > form fill and submit adds new equipment
 	
 	
-// add details view on click
+// create EquipmentDetails.js view
+	add state slice selectedEquipment: null
+	
+	Create a method in EquipmentControl that will handle when a equipment is clicked.
+	
+	Create a new conditional in EquipmentControl to handle the EquipmentDetail component.
+	
+	prop drill our method for handling a equipment click down to EquipmentList then to Equipment
+	
 	comment back in whenEquipmentClicked prop and propType in EquipmentList.js
 		add onEquipmentSelection callback prop to EquipmentControl's <EquipmentList />
+		
+	update EquipmentDetail to handle props
 
 
 // add delete

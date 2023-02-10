@@ -1,6 +1,7 @@
 import React from 'react';
 import EquipmentList from './EquipmentList';
 import NewEquipmentForm from './NewEquipmentForm';
+import EquipmentDetails from './EquipmentDetails';
 
 class EquipmentControl extends React.Component {
   constructor(props) {
@@ -15,14 +16,22 @@ class EquipmentControl extends React.Component {
           quantity: 130, 
           imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png"
         } 
-      ]
+      ],
+      selectedEquipment: null
     };
   }
 
   handleClick = () => {
-    this.setState(prevState => ({
-      formVisibleOnPage: !prevState.formVisibleOnPage
-    }));
+    if (this.state.selectedEquipment != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedEquipment: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
+    }
   }
 
   handleAddingNewEquipmentToList = (newEquipment) => {
@@ -30,15 +39,23 @@ class EquipmentControl extends React.Component {
     this.setState({mainEquipmentList: newMainEquipmentList, formVisibleOnPage: false});
   }
 
+  handleChangingSelectedEquipment = (id) => {
+    const newSelectedEquipment = this.state.mainEquipmentList.filter(equipment => equipment.id === id)[0];
+    this.setState({ selectedEquipment: newSelectedEquipment });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.formVisibleOnPage) {
+    if (this.state.selectedEquipment != null) {
+      currentlyVisibleState = <EquipmentDetails equipment={this.state.selectedEquipment} />
+      buttonText = "Return to Equipment List";
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewEquipmentForm onNewEquipmentCreation={this.handleAddingNewEquipmentToList}/>;
       buttonText = "Return to Equipment List";
     } else {
-      currentlyVisibleState = <EquipmentList equipmentList={this.state.mainEquipmentList}/>;
+      currentlyVisibleState = <EquipmentList equipmentList={this.state.mainEquipmentList} onEquipmentSelection={this.handleChangingSelectedEquipment}/>;
       buttonText = "Add Equipment";
     }
     return (

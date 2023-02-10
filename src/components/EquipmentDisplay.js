@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const EquipmentDisplay = (props) => {
   return (
-    <div>
+    <div onClick={() => props.whenEquipmentClicked(props.id)}>
       <img src={props.imgUrl} alt="equipment"/>
       <p>{props.name}</p>
     </div>

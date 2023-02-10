@@ -8,7 +8,7 @@ const EquipmentList = (props) => {
       <hr />
       {props.equipmentList.map((equipment) =>
         <EquipmentDisplay
-          // whenEquipmentClicked={props.onEquipmentSelection}
+          whenEquipmentClicked={props.onEquipmentSelection}
           name={equipment.name}
           imgUrl={equipment.imgUrl}
           id={equipment.id}
@@ -21,7 +21,7 @@ const EquipmentList = (props) => {
 
 EquipmentList.propTypes = {
   equipmentList: PropTypes.array,
-  // onEquipmentSelection: PropTypes.func
+  onEquipmentSelection: PropTypes.func
 };
 
 export default EquipmentList;
