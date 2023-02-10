@@ -61,6 +61,15 @@ class EquipmentControl extends React.Component {
     this.setState({mainEquipmentList: editedMainEquipmentList, editing: false, selectedEquipment: null});
   }
 
+  handleUnitSold = () => {
+    if (this.state.selectedEquipment.quantity === 0) {
+      alert("No more units left!");
+    } else {
+      const newSelectedEquipment = {...this.state.selectedEquipment, quantity: this.state.selectedEquipment.quantity - 1};
+      this.setState({selectedEquipment: newSelectedEquipment});
+    }
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -74,7 +83,8 @@ class EquipmentControl extends React.Component {
       currentlyVisibleState = <EquipmentDetails 
         equipment={this.state.selectedEquipment} 
         onClickingDelete={this.handleDeletingEquipment}
-        onClickingEdit={this.handleEditClick}/>
+        onClickingEdit={this.handleEditClick}
+        onClickingUnitSold={this.handleUnitSold}/>
       buttonText = "Return to Equipment List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewEquipmentForm onNewEquipmentCreation={this.handleAddingNewEquipmentToList}/>;

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const EquipmentDetails = (props) => {
-  const { equipment, onClickingDelete } = props;
+  const { equipment, onClickingDelete, onClickingUnitSold,  onClickingEdit } = props;
   
   return (
     <React.Fragment>
@@ -13,8 +13,10 @@ const EquipmentDetails = (props) => {
       <p>{equipment.description}</p>
       <p>Price: {equipment.price}</p>
       <p>Quantity: {equipment.quantity}</p>
+      <hr />
+      <button onClick={onClickingUnitSold}>Mark a single unit sold</button>
       <button onClick={() => onClickingDelete(equipment.id)}>Delete Equipment</button>
-      <button onClick={props.onClickingEdit}>Update Equipment</button>
+      <button onClick={onClickingEdit}>Update Equipment</button>
     </React.Fragment>
   );
 }
