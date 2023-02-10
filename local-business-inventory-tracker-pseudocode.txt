@@ -20,7 +20,9 @@ add CREATE, READ, and UPDATE functionality
 // Create component diagram
 >  create component diagram
 
+
 // create repo and set up directory
+
 
 // create Header.js
 
@@ -30,23 +32,63 @@ add CREATE, READ, and UPDATE functionality
 
 	confirm visual of Rich Fitness header
 
-// create Equipment.js
-	create JSX for 
+
+// create EquipmentDisplay.js
+	create JSX for props.imgUrl to display image /w onCLick event when img is clicked
+	<img src={props.imgUrl} alt="An image of tickets" />
+		props.name
+			add EquipmentDisplay.propTypes for name and imgUrl (string)
 	
-	add <Equipment {propsHere}/> to return of EquipmentList.js function component 
+	add <EquipmentDisplay {propsHere}/> to return of EquipmentList.js function component 
 	
 	
 // create EquipmentList.js
-
+	return JSX of equipment in props.equipmentList array using map
+		for every element, create <EquipmentDisplay {propsHere}/>
+			add EquipmentList.propTypes for equipmentList array and whenEquipmentClicked func
+			
+	comment out whenEquipmentClicked prop and propType 
 
 
 // create EquipmentControl.js
-
+	add state slice mainEquipmentList: [ {name: "name", description: "description", price: 
+	"price", quantity: 130 imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png"} ]
 	
+	add to render let currentlyVisibleState = null;
+    let buttonText = null;
+	
+	conditional rendering to assign currentlyVisibleState to <EquipmentList equipmentList={this.state.mainEqupmentList}/>
+	
+	return {currentlyVisibleState} and button
 	
 	add to App.js
+	
+	confirm equipment is displayed
+	
+	comment back in whenEquipmentClicked prop and propType in EquipmentList.js
+		add onEquipmentSelection callback prop to EquipmentControl's <EquipmentList />
+
+	add handleClick function
+	
+	add state slice formVisibleOnPage: false
+	
+
+// create NewEquipmentForm
+	
+	confirm adding new equipment > form fill and submit adds new equipment
+	
+	
+// add details view on click
 
 
+// add delete
+
+
+// add update
+
+
+// add "sold" decrement
+	
 
 	
 	
