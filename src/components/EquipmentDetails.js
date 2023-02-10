@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const EquipmentDetails = (props) => {
-  const { equipment } = props;
+  const { equipment, onClickingDelete } = props;
   
   return (
     <React.Fragment>
@@ -13,12 +13,14 @@ const EquipmentDetails = (props) => {
       <p>{equipment.description}</p>
       <p>Price: {equipment.price}</p>
       <p>Quantity: {equipment.quantity}</p>
+      <button onClick={() => onClickingDelete(equipment.id)}>Delete Equipment</button>
     </React.Fragment>
   );
 }
 
 EquipmentDetails.propTypes = {
-  equipment: PropTypes.object
+  equipment: PropTypes.object,
+  onClickingDelete: PropTypes.func
 }
 
 export default EquipmentDetails;

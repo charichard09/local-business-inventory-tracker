@@ -44,12 +44,17 @@ class EquipmentControl extends React.Component {
     this.setState({ selectedEquipment: newSelectedEquipment });
   }
 
+  handleDeletingEquipment = (id) => {
+    const newMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== id);
+    this.setState({mainEquipmentList: newMainEquipmentList, selectedEquipment: null});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
     if (this.state.selectedEquipment != null) {
-      currentlyVisibleState = <EquipmentDetails equipment={this.state.selectedEquipment} />
+      currentlyVisibleState = <EquipmentDetails equipment={this.state.selectedEquipment} onClickingDelete={this.handleDeletingEquipment}/>
       buttonText = "Return to Equipment List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewEquipmentForm onNewEquipmentCreation={this.handleAddingNewEquipmentToList}/>;

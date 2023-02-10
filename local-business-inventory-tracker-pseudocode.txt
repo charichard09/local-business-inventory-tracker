@@ -86,16 +86,26 @@ add CREATE, READ, and UPDATE functionality
 	
 	Create a new conditional in EquipmentControl to handle the EquipmentDetail component.
 	
-	prop drill our method for handling a equipment click down to EquipmentList then to Equipment
+	prop drill our method onEquipmentSelection for handling a equipment click down from Control to EquipmentList then to Equipment
 	
-	comment back in whenEquipmentClicked prop and propType in EquipmentList.js
-		add onEquipmentSelection callback prop to EquipmentControl's <EquipmentList />
+	add whenEquipmentClicked prop and propType in EquipmentList.js
+	
+	add to EquipmentDisplay our onClick={() => props.whenEquipmentClicked(props.id)}
 		
 	update EquipmentDetail to handle props
+	
+	update handClick() in Control to toggle state change when clicking Return to List
+	
+	confirm details page
 
 
 // add delete
-
+	add handleDeletingEquipment function to EquipmentControl
+	
+	pass function as prop down to <EquipmentDetail ... onClickingDelete={this.handleDeletingEquipment}/> 
+	
+	add onClickingDelete to prop destructuring
+		add button to EquipmentDetails with an onClick={() => onClickingDelete(equipment.id)}
 
 // add update
 
