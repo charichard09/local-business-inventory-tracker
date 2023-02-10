@@ -14,13 +14,15 @@ const EquipmentDetails = (props) => {
       <p>Price: {equipment.price}</p>
       <p>Quantity: {equipment.quantity}</p>
       <button onClick={() => onClickingDelete(equipment.id)}>Delete Equipment</button>
+      <button onClick={props.onClickingEdit}>Update Equipment</button>
     </React.Fragment>
   );
 }
 
 EquipmentDetails.propTypes = {
   equipment: PropTypes.object,
-  onClickingDelete: PropTypes.func
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 }
 
 export default EquipmentDetails;

@@ -12,7 +12,7 @@ const ReusableForm = (props) => {
         <input
           type='text'
           name='imgUrl'
-          placeholder='Image URL' />
+          placeholder='(optional) Image URL' />
         <input
           type='text'
           name='description'

@@ -108,6 +108,30 @@ add CREATE, READ, and UPDATE functionality
 		add button to EquipmentDetails with an onClick={() => onClickingDelete(equipment.id)}
 
 // add update
+	add slice of state to EquipmentControl editing: false
+	
+	add handleEditClick function literal
+	
+	pass handleEditClick as prop to EquipmentDetails
+		onClickingEdit={this.handleEditClick}
+		
+	add button to EquipmentDetails.js /w onClick={ props.onClickingEdit } to simply change state to set editing to true
+		add propType for onClickingEdit: PropTypes.func
+		
+	add conditional rendering for EditEquipmentForm
+		pass this.state.selectedEquipment as a prop to <EditTicketForm />
+		
+	create EditEquipmentForm.js
+		reuse ReusableForm to create form
+		
+	add a method in EquipmentControl to handle updating equipment
+	handleEditEquipmentInList
+	
+	pass handleEditEquipmentInList as a prop to EditEquipmentForm
+	
+	in EditEquipmentForm add method handleEditTicketFormSubmission(event) that will call callback function
+	props.onEditEquipment
+	
 
 
 // add "sold" decrement

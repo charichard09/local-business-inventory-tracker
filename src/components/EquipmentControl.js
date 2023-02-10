@@ -2,6 +2,7 @@ import React from 'react';
 import EquipmentList from './EquipmentList';
 import NewEquipmentForm from './NewEquipmentForm';
 import EquipmentDetails from './EquipmentDetails';
+import EditEquipmentForm from './EditEquipmentForm';
 
 class EquipmentControl extends React.Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class EquipmentControl extends React.Component {
           imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png"
         } 
       ],
-      selectedEquipment: null
+      selectedEquipment: null,
+      editing: false
     };
   }
 
@@ -49,12 +51,30 @@ class EquipmentControl extends React.Component {
     this.setState({mainEquipmentList: newMainEquipmentList, selectedEquipment: null});
   }
 
+  handleEditClick = () => {
+    this.setState({editing: true});
+  }
+
+  handleEditEquipmentInList = (equipmentToEdit) => {
+    const editedMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== this.state.selectedEquipment.id)
+      .concat(equipmentToEdit);
+    this.setState({mainEquipmentList: editedMainEquipmentList, editing: false, selectedEquipment: null});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.state.selectedEquipment != null) {
-      currentlyVisibleState = <EquipmentDetails equipment={this.state.selectedEquipment} onClickingDelete={this.handleDeletingEquipment}/>
+    if (this.state.editing) {
+      currentlyVisibleState = <EditEquipmentForm 
+        equipment={this.state.selectedEquipment} 
+        onEditEquipment={this.handleEditEquipmentInList} />
+      buttonText = "Return to Equipment List";
+    } else if (this.state.selectedEquipment != null) {
+      currentlyVisibleState = <EquipmentDetails 
+        equipment={this.state.selectedEquipment} 
+        onClickingDelete={this.handleDeletingEquipment}
+        onClickingEdit={this.handleEditClick}/>
       buttonText = "Return to Equipment List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewEquipmentForm onNewEquipmentCreation={this.handleAddingNewEquipmentToList}/>;
