@@ -57,7 +57,7 @@ add CREATE, READ, and UPDATE functionality
 	add to render let currentlyVisibleState = null;
     let buttonText = null;
 	
-	conditional rendering to assign currentlyVisibleState to <EquipmentList equipmentList={this.state.mainEqupmentList}/>
+	assign currentlyVisibleState to <EquipmentList equipmentList={this.state.mainEqupmentList}/>
 	
 	return {currentlyVisibleState} and button
 	
@@ -65,20 +65,23 @@ add CREATE, READ, and UPDATE functionality
 	
 	confirm equipment is displayed
 	
-	comment back in whenEquipmentClicked prop and propType in EquipmentList.js
-		add onEquipmentSelection callback prop to EquipmentControl's <EquipmentList />
+
 
 	add handleClick function
 	
 	add state slice formVisibleOnPage: false
 	
 
-// create NewEquipmentForm
+// create NewEquipmentForm.js
+
+// create ReusableForm.js
 	
 	confirm adding new equipment > form fill and submit adds new equipment
 	
 	
 // add details view on click
+	comment back in whenEquipmentClicked prop and propType in EquipmentList.js
+		add onEquipmentSelection callback prop to EquipmentControl's <EquipmentList />
 
 
 // add delete

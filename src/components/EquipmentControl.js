@@ -1,5 +1,6 @@
 import React from 'react';
 import EquipmentList from './EquipmentList';
+import NewEquipmentForm from './NewEquipmentForm';
 
 class EquipmentControl extends React.Component {
   constructor(props) {
@@ -18,13 +19,28 @@ class EquipmentControl extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState(prevState => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage
+    }));
+  }
+
+  handleAddingNewEquipmentToList = (newEquipment) => {
+    const newMainEquipmentList = this.state.mainEquipmentList.concat(newEquipment);
+    this.setState({mainEquipmentList: newMainEquipmentList, formVisibleOnPage: false});
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    currentlyVisibleState = <EquipmentList equipmentList={this.state.mainEquipmentList} />;
-    buttonText = "Add Equipment";
-
+    if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewEquipmentForm onNewEquipmentCreation={this.handleAddingNewEquipmentToList}/>;
+      buttonText = "Return to Equipment List";
+    } else {
+      currentlyVisibleState = <EquipmentList equipmentList={this.state.mainEquipmentList}/>;
+      buttonText = "Add Equipment";
+    }
     return (
       <React.Fragment>
         {currentlyVisibleState}
