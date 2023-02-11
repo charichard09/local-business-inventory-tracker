@@ -7,6 +7,7 @@
 ### <u>Table of Contents</u>
 * <a href="#Description">Description</a>
 * <a href="#Technologies-Used">Technologies Used</a>
+* <a href="#Component-Diagram">Component Diagram</a>
 * <a href="#Setup/Installation-Requirements">Setup/Installation Requirements</a>
 * <a href="#Known-Bugs">Known Bugs</a>
 * <a href="#License">License</a>
