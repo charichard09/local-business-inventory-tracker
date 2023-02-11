@@ -129,7 +129,7 @@ add CREATE, READ, and UPDATE functionality
 	
 	pass handleEditEquipmentInList as a prop to EditEquipmentForm
 	
-	in EditEquipmentForm add method handleEditTicketFormSubmission(event) that will call callback function
+	in EditEquipmentForm add method handleEditEquipmentFormSubmission(event) that will call callback function
 	props.onEditEquipment
 	
 
