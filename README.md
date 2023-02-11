@@ -35,7 +35,7 @@ _Rich Fitness Inventory Tracker is a web application that allows users to track 
 * [OS X and Windows Instructions](https://www.learnhowtoprogram.com/intermediate-javascript/getting-started-with-javascript/installing-node-js)
 * _Clone this repo to a local directory_
 * _Using Terminal on OS X or PowerShell on Windows: navigate to the directory that this repo was cloned to_
-* _Start a development server which will open a locally hosted live version of this Currency Exchange with $ npm run start_
+* _Start a development server which will open a locally hosted live version with $ npm run start_
 
 ## Known Bugs
 
