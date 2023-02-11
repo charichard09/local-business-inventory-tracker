@@ -11,8 +11,8 @@ const EquipmentDetails = (props) => {
       <img src={equipment.imgUrl} alt="equipment"/>
       <h3>{equipment.name}</h3>
       <p>{equipment.description}</p>
-      <p>Price: {equipment.price}</p>
-      <p>Quantity: {equipment.quantity}</p>
+      <p>Price: {equipment.price}$</p>
+      <p>Quantity: {equipment.quantity} / 130</p>
       <hr />
       <button onClick={onClickingUnitSold}>Mark a single unit sold</button>
       <button onClick={() => onClickingDelete(equipment.id)}>Delete Equipment</button>

@@ -11,11 +11,12 @@ class EquipmentControl extends React.Component {
       formVisibleOnPage: false,
       mainEquipmentList: [ 
         {
-          name: "name", 
-          description: "description", 
-          price: "price", 
-          quantity: 130, 
-          imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png"
+          name: "No Name", 
+          description: "No Description", 
+          price: 0, 
+          quantity: 0, 
+          imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png",
+          id: "default"
         } 
       ],
       selectedEquipment: null,
@@ -37,7 +38,7 @@ class EquipmentControl extends React.Component {
   }
 
   handleAddingNewEquipmentToList = (newEquipment) => {
-    const newMainEquipmentList = this.state.mainEquipmentList.concat(newEquipment);
+    const newMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== "default").concat(newEquipment);
     this.setState({mainEquipmentList: newMainEquipmentList, formVisibleOnPage: false});
   }
 
@@ -49,6 +50,19 @@ class EquipmentControl extends React.Component {
   handleDeletingEquipment = (id) => {
     const newMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== id);
     this.setState({mainEquipmentList: newMainEquipmentList, selectedEquipment: null});
+
+    if (this.state.mainEquipmentList.length === 0) {
+      this.setState({ mainEquipmentList: [ 
+        {
+          name: "No Name", 
+          description: "No Description", 
+          price: 0, 
+          quantity: 0, 
+          imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png",
+          id: "default"
+        } 
+      ]});
+    }
   }
 
   handleEditClick = () => {
@@ -93,6 +107,7 @@ class EquipmentControl extends React.Component {
       currentlyVisibleState = <EquipmentList equipmentList={this.state.mainEquipmentList} onEquipmentSelection={this.handleChangingSelectedEquipment}/>;
       buttonText = "Add Equipment";
     }
+
     return (
       <React.Fragment>
         {currentlyVisibleState}
