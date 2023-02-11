@@ -3,21 +3,22 @@ import EquipmentList from './EquipmentList';
 import NewEquipmentForm from './NewEquipmentForm';
 import EquipmentDetails from './EquipmentDetails';
 import EditEquipmentForm from './EditEquipmentForm';
+import { v4 } from 'uuid';
 
 class EquipmentControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      mainEquipmentList: [ 
+      mainEquipmentList: [
         {
-          name: "No Name", 
-          description: "No Description", 
-          price: 0, 
-          quantity: 0, 
-          imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png",
-          id: "default"
-        } 
+          name: "Bench Press", 
+          description: "Rich Fitness Bench Press with 45lb barbell, 2x 25lb plates, 2x 10lb plates, 2x 5lb plates, 2x 2.5lb plates", 
+          price: 45, 
+          quantity: 3, 
+          imgUrl: "https://media.istockphoto.com/id/1309046408/photo/home-fitness-bench-with-barbell.jpg?b=1&s=170667a&w=0&k=20&c=mqf1JuwblYs8YGYbkjaeUWYN0w4q4AXlY9F-njvgaXM=",
+          id: v4()
+        }
       ],
       selectedEquipment: null,
       editing: false
@@ -38,7 +39,7 @@ class EquipmentControl extends React.Component {
   }
 
   handleAddingNewEquipmentToList = (newEquipment) => {
-    const newMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== "default").concat(newEquipment);
+    const newMainEquipmentList = this.state.mainEquipmentList.concat(newEquipment);
     this.setState({mainEquipmentList: newMainEquipmentList, formVisibleOnPage: false});
   }
 
@@ -50,19 +51,6 @@ class EquipmentControl extends React.Component {
   handleDeletingEquipment = (id) => {
     const newMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== id);
     this.setState({mainEquipmentList: newMainEquipmentList, selectedEquipment: null});
-
-    if (this.state.mainEquipmentList.length === 0) {
-      this.setState({ mainEquipmentList: [ 
-        {
-          name: "No Name", 
-          description: "No Description", 
-          price: 0, 
-          quantity: 0, 
-          imgUrl: "https://www.pngkey.com/png/detail/243-2434212_shipping-box-png-banner-transparent-download-shipping-boxes.png",
-          id: "default"
-        } 
-      ]});
-    }
   }
 
   handleEditClick = () => {
@@ -76,8 +64,8 @@ class EquipmentControl extends React.Component {
   }
 
   handleUnitSold = () => {
-    if (this.state.selectedEquipment.quantity === 0) {
-      alert("No more units left!");
+    if (this.state.selectedEquipment.quantity <= 0) {
+      return;
     } else {
       const newSelectedEquipment = {...this.state.selectedEquipment, quantity: this.state.selectedEquipment.quantity - 1};
       this.setState({selectedEquipment: newSelectedEquipment});
