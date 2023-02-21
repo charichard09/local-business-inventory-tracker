@@ -68,7 +68,9 @@ class EquipmentControl extends React.Component {
       return;
     } else {
       const newSelectedEquipment = {...this.state.selectedEquipment, quantity: this.state.selectedEquipment.quantity - 1};
-      this.setState({selectedEquipment: newSelectedEquipment});
+      const editedMainEquipmentList = this.state.mainEquipmentList.filter(equipment => equipment.id !== this.state.selectedEquipment.id)
+      .concat(newSelectedEquipment);
+      this.setState({selectedEquipment: newSelectedEquipment, mainEquipmentList: editedMainEquipmentList});
     }
   }
 
